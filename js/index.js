@@ -8,13 +8,13 @@ function loaded(){
     window.addEventListener('keydown', function(e){
         console.log(e.key)
         if(keyDrumMap.has(e.key)){
-            console.log('Bu key sesi var');
-            // Oyleyse calmaliyiz
+            console.log('This key exist on our Map');
+            // Lets play the sound
         let newAudio = document.createElement('AUDIO');
         newAudio.src = wavWay + keyDrumMap.get(e.key)+'.wav';
         newAudio.play();
         }else{
-            console.log('Bu key sesi tanimlanmamis.')
+            console.log('This key does not exist on our Map.')
         }
     })
 }
