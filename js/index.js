@@ -35,7 +35,7 @@ function playTheSound(theKey){
 }
 
 
-let wavWay = './wav/';
+const wavWay = './wav/';
 let keyDrumMap = new Map();
 
 //keyDrumMap.set(soundKey, soundFile);
