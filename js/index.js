@@ -6,18 +6,34 @@ window.addEventListener('load', function(){
 
 function loaded(){
     window.addEventListener('keydown', function(e){
-        console.log(e.key)
-        if(keyDrumMap.has(e.key)){
-            console.log('This key exist on our Map');
-            // Lets play the sound
-        let newAudio = document.createElement('AUDIO');
-        newAudio.src = wavWay + keyDrumMap.get(e.key)+'.wav';
-        newAudio.play();
-        }else{
-            console.log('This key does not exist on our Map.')
-        }
+        console.log(e.key + ' key pressed!');
+        playTheSound(e.key)
+
+    })
+
+    document.querySelectorAll("div.key").forEach(function(elem){
+        elem.addEventListener('click', function (e) {
+
+            let thatKey = e.target.dataset.key? e.target.dataset.key : e.target.parentNode.dataset.key;
+            console.log(thatKey+ ' key clicked.');
+            playTheSound(thatKey)
+
+        })
     })
 }
+
+function playTheSound(theKey){
+    if(keyDrumMap.has(theKey)){
+        console.log('This key exist on our Map');
+        // Lets play the sound
+        let newAudio = document.createElement('AUDIO');
+        newAudio.src = wavWay + keyDrumMap.get(theKey)+'.wav';
+        newAudio.play();
+    }else{
+        console.log('This key does not exist on our Map.')
+    }
+}
+
 
 let wavWay = './wav/';
 let keyDrumMap = new Map();
